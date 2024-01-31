@@ -1,0 +1,17 @@
+.shop-container{
+
+ display: flex;
+
+
+}
+
+
+.product-container{
+
+margin-left: 70px;
+margin-right: 20px;
+border-right: 1px solid lightcyan;
+width: 70%;
+
+
+}
