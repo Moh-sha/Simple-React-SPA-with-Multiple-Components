@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Product.css";       
+import { Link } from 'react-router-dom';
 const Product = (props) => {
    // Check if 'product' prop is defined
    if (!props.product || !props.product.name) {
@@ -19,8 +20,8 @@ const Product = (props) => {
         </div>
 
         <div className='product-name'>
-        {name}
-        <br />
+        <h4 className='product-name'><Link to="/product"> {name}
+        <br /></Link> </h4>       
         <p><small>by : {seller} </small></p>
         <p>$ {price}</p>
         <br />
