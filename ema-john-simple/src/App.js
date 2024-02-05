@@ -7,6 +7,7 @@ import Review from "./components/Review/Review";
 import Inventory from "./components/Inventory/Inventory";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
          <Route path="/Shop" element={<Shop/>}></Route>      
          <Route path="/Review" element={<Review></Review>}></Route>
          <Route path="/Inventory" element={<Inventory></Inventory>}></Route>
-         <Route path="*" element={<NotFound></NotFound>}></Route>
          <Route exact path="/" element={<Shop/>}></Route>   
+         <Route  path="/product/:key" element={<ProductDetails/>}></Route>   
+         <Route path="*" element={<NotFound></NotFound>}></Route>
+       
          </Routes>
          
 
