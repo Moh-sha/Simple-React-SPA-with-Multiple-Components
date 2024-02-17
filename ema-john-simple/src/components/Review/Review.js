@@ -3,9 +3,27 @@ import { getStoredCart } from '../../utilities/fakedb';
 import fakeData from '../../fakeData';
 import Product from '../Product/Product';
 import ReviewItem from '../ReviewItem/ReviewItem';
+import {clearTheCart} from '../../utilities/fakedb';
+import Cart from '../Cart/Cart';
+import { Link } from 'react-router-dom';
 const Review = () => {
 
  const [cart ,setCart] = useState([]);
+
+ const HandleRemoveItem=(product_key)=>{
+        
+   console.log("Clicked",product_key);
+
+  const new_cart = cart.filter(pd=> pd.key !== product_key);
+
+  setCart(new_cart);
+
+  clearTheCart(product_key);
+
+ }
+
+
+
   useEffect(()=>{
     const saveData = getStoredCart(); 
     const ShowKey = Object.keys(saveData);
@@ -17,6 +35,7 @@ const Review = () => {
     });setCart(counts);
 
     },[]);
+    
      
    
 
@@ -25,13 +44,25 @@ const Review = () => {
 
 
     return (
-        <div>
-            <h1>Total Cart : {cart.length}</h1>
-            { 
+        <div class="shop-container">
+          <div class="product-container">
+          { 
              cart.map(p =>
-                <ReviewItem Product={p}></ReviewItem>
+                <ReviewItem Product={p} HandleRemoveItem={HandleRemoveItem}></ReviewItem>
               )
-            }
+            }  
+            
+          </div> 
+          
+        <div class="cart-container">
+        <Cart cart={cart}>
+        <Link to='/review'>
+            <button className='main-button'>Place Order</button>
+          </Link>
+         
+       </Cart>
+        </div> 
+             
         </div>
     );
 };

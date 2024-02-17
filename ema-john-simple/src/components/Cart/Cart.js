@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 
 const Cart = (props) => {
     const cart_file =props.cart;
     console.log(cart_file);
    console.log(cart_file.lenght);
-   const total = cart_file.reduce ((total,pd)=>total+pd.price  ,0);
+   const total = cart_file.reduce ((total,pd)=>total+pd.price * pd.quantity  ,0);
    let  shipping = 0;
    if(total >35){
      shipping = 0;
@@ -33,10 +33,12 @@ const Cart = (props) => {
           <p>Product price : {total}</p>
           <p>Total price : {total + shipping}</p>
           <br />
-          <Link to='/review'>
-            <button className='main-button'>Review</button>
-          </Link>
-         
+        {
+             
+             props.children 
+
+
+        }
         </div>
     );
 };
