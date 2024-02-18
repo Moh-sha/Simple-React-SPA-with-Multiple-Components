@@ -23,6 +23,17 @@ const Review = () => {
  }
 
 
+ const handlePlaceOrder=()=>
+ {
+ setCart([]);
+  clearTheCart();    
+   
+  
+              
+  console.log("Place Order");
+
+
+ }
 
   useEffect(()=>{
     const saveData = getStoredCart(); 
@@ -56,8 +67,8 @@ const Review = () => {
           
         <div class="cart-container">
         <Cart cart={cart}>
-        <Link to='/review'>
-            <button className='main-button'>Place Order</button>
+        <Link >
+            <button onClick={handlePlaceOrder} className='main-button'>Place Order</button>
           </Link>
          
        </Cart>
